@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d8dee4; box-shadow: 0 4px 2px -2px #a0a1ab; /*border-bottom:1px solid #d8cdd4;*/">
+    <!--  d9c2d4 -->
+    <a class="navbar-brand" routerLink="#"><h4 class="no-margin"><i class="fas fa-coffee"></i>&nbsp;Caffeinator</h4></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a *ngIf='!userService.isAuthenticated()' class="nav-item nav-link" routerLinkActive="active" routerLink="/login">Login<span class="sr-only">(current)</span></a>
+            <a *ngIf='userService.isAuthenticated()' class="nav-item nav-link" routerLinkActive="active" routerLink="/logout">Logout<span class="sr-only">(current)</span></a>
+            <a *ngIf='userService.isAuthenticated()' class="nav-item nav-link" routerLinkActive="active" routerLink="/beverage/calculator">Calculator<span class="sr-only">(current)</span></a>
+        </div>
+    </div>
+</nav>

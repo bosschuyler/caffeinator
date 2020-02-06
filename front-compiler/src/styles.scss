@@ -1,0 +1,167 @@
+
+$navbar-light-brand-color: #000;
+$navbar-light-brand-hover-color: #000;
+
+
+$navbar-light-color: #6e6469;
+// $navbar-light-color: lighten(#5f143a, 15%);
+//$navbar-light-color: #ab1461;
+// $navbar-light-hover-color: #5f143a;
+// $navbar-light-active-color: #5f143a;
+$navbar-light-hover-color: darken($navbar-light-color, 20%);
+$navbar-light-active-color: darken($navbar-light-color, 20%);
+$label-margin-bottom: 2px;
+// 2px solid #e9cada
+
+
+@import "node_modules/bootstrap/scss/bootstrap";
+/* You can add global styles to this file, and also import other style files */
+
+.shadowed {
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    /*border-top: 1px; 
+    border-top-style: solid; 
+    border-top-color: #efefef;*/
+}
+
+
+.hidden {
+    display: none;
+}
+
+html, body {
+    // font-family: 'Lato', sans-serif;
+    // font-family: "Amatic SC";
+    // font-family: 'Google Sans', sans-serif;
+    font-family: "Zilla Slab";
+    // font-weight:700;
+    // background-color: #f6f0f2;
+    // background-color: #f7f3f4;
+    // background-color: #f4f1f2;
+    background-color: #efecee;
+
+}
+
+h1, h2, h3, h4 {
+    // font-family: 'Google Sans Display';
+    font-family: 'Zilla Slab', serif;
+    // font-family: 'Bree Serif', serif;
+    // font-weight: 700;
+    // font-family: "Special Elite";
+    // font-family: "Amatic SC";
+    font-weight: 700;
+    margin: 0;
+}
+
+.navbar-brand{
+    h1, h2, h3, h4 {
+        // color: #094819;
+        // color: #65a077;
+        // font-family: "Special Elite";
+        font-family: 'Zilla Slab', serif;
+        // font-family: "Amatic SC";
+        // font-weight: 700;
+        color: #5d5951;
+    }
+} 
+
+h1.page-title {
+    // font-family: 'Nunito';
+    // font-weight: 300;
+    color: #000;
+}
+
+.form-group label {
+    font-weight: 700;
+}
+
+.no-margin {
+    margin:0;
+}
+
+.margin-bottom-xl {
+    margin-bottom: 15px;
+}
+
+.clickable {
+    cursor: pointer;
+    transition: all .15s ease-in-out;
+    &.pop:hover {
+        z-index:100000;
+        transform: scale(1.048)translateX(10px); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+
+    &.pop-large:hover {
+        z-index:100000;
+        transform: scale(1.5)translateX(8px); 
+    }
+}
+
+.no-padding {
+    padding: 0px;
+}
+
+.tablet {
+    &.white {
+        background-color: #fff;
+    }
+
+    .title {
+        font-weight:700;
+    }
+}
+
+.bg-money {
+    background-color: #e4efe7;
+}
+
+.accent {
+    padding: 10px 18px 10px 18px;
+    border-right: 1px solid #d3ded9;
+    margin-right: 15px;
+    display:inline-block;
+
+    &-2x {
+        padding: 6px 18px 10px 18px;
+        font-size:1.25em;
+    }
+
+    &-icon {
+        padding: 15px 33px 15px 18px;
+    }
+    &.rounded-left {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    
+    &.text-money {
+        color: #558764;
+    }
+
+    &.bg-money {
+        @extend .bg-money
+    }
+}
+
+.accent-content {
+    display:inline-block;
+}
+
+.accent-text-money {
+    color: #558764;
+}
+
+.margin-bottom-lg {
+    margin-bottom: 15px;
+}
+
+.margin-bottom-md {
+    margin-bottom: 10px;
+}
+
+.margin-bottom-sm {
+    margin-bottom: 5px;
+}
+
+/*Budget-Piggy pink-brand */
+/*!important #d45998 #ab1461*/

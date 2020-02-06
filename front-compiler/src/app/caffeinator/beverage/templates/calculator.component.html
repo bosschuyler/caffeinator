@@ -1,0 +1,58 @@
+
+<div class="container" style="box-shadow:none!important; background:none !important;">
+    <div class="row justify-content-center">
+        <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+            <div class="main shadowed rounded-lg" style="padding:28px;background: #fff; margin-top:50px;">
+                <div class="margin-bottom-lg">
+                    <h4 class="no-margin">Have you drank too much Caffeine?</h4>
+                    Pick your favorite beverage and let us know how much you are drinking and we will let you know if you are over the safe limit of {{safe_limit}}mg.
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label left">
+                        Beverage
+                    </label>
+                    <select (change)="onBeverageSelected($event)" name="beverage" class="form-control margin-bottom-sm">
+                        <option>Choose a Beverage</option>
+                        <option *ngFor="let item of beverage_search.items" value={{item.id}}>{{item.name}}</option>
+                    </select>
+                    <div *ngIf="beverage">
+                        <i>{{beverage.description}}</i>
+                    </div>
+                </div>
+                
+                <div *ngIf="beverage" class="beverage-info margin-bottom-lg">
+                    <div class="form-group">
+                        <label class="control-label left">
+                            How many {{beverage.measure}}s have you had?
+                        </label>
+                        <div class="margin-bottom-sm">
+                            <input (keyup)="onAmountKeyup($event)" name="drinks" class="form-control" [value]="drinks.amount" (input)="drinks.amount=$event.target.value"/>
+                        </div>
+                        <app-message [message]="drinks.message" [loading]="false" [type]="drinks.message_type"></app-message>
+                    </div>
+                </div>
+
+                <div *ngIf="result.consumed_caffeine != null">
+                    <hr>
+                    <div class="form-group">
+                        <label class="control-label left">
+                            Consumption Results
+                        </label>
+                        <div class="margin-bottom-sm alert" [ngClass]="{'alert-danger': result.over_limit, 'alert-warning': !result.over_limit && !result.remaining_drinks, 'alert-success': result.remaining_drinks }" >
+                            You have consumed {{result.consumed_caffeine}}mg of caffeine. <span *ngIf="result.over_limit">You are over a safe limit of caffeine consumption already by {{result.over_limit}}mg.</span>&nbsp;
+                            <div *ngIf="result.possible_drinks.length; else elseBlock">
+                                <br>
+                                Remaining Drink Options:
+                                <div *ngFor="let drink of result.possible_drinks">
+                                    {{drink.remaining}} {{drink.beverage.measure}}<span *ngIf="drink.remaining > 1">s</span> - {{drink.beverage.name}} ({{drink.caffeine}}mg)
+                                </div>
+                            </div>
+                            <ng-template #elseBlock>You should stop drinking more caffeine.</ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

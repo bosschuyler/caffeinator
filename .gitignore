@@ -1,0 +1,5 @@
+front-compiler/node_modules
+front-compiler/dist
+front-compiler/*.lock
+front-compiler/package-lock.json
+

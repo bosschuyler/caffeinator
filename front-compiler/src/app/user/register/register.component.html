@@ -1,0 +1,77 @@
+
+<div class="padding-sm" [ngClass]="{'hidden': !form.isSubmitted() || !form.message, 'alert alert-danger': !form.isLoading() && form.hasError(), 'alert-success': !form.isLoading() && !form.hasError()}">
+    <div style="font-size:18px">
+        <i class="fas fa-fw" [ngClass]="{'fa-circle-notch fa-spin': form.isLoading(), 'fa-check': !form.hasError() && !form.isLoading(), 'fa-ban': form.hasError() && !form.isLoading() }"></i>&nbsp;<span [innerHTML]="form.message"></span>
+    </div>
+    <div *ngFor="let error of form.errors; index as i;">
+        <i class="fas fa-fw fa-exclamation-circle"></i>&nbsp;{{ error }}
+    </div>
+</div>
+
+<form id="user-register-form" class="margin-top-xl">
+    <!-- Replace this with the message service/component from angular -->
+    <div class="user-account-lookup">
+        <div class="form-group">
+            <label class="control-label left">
+                Email
+            </label>
+            <div class="margin-bottom-sm">
+                <input (keyup)="onEmailKeyup($event)" name="email" [value]="data.email" (input)="data.email=$event.target.value" class="form-control" placeholder="Enter your email to see if you already exist..."/>
+            </div>
+            <app-message [message]="email.message" [loading]="email.loading" [type]="email.messageType"></app-message>
+        </div>
+    </div>
+    
+    <div class="user-password-container" [ngClass]="{'hidden': !email.valid}">
+        <div class="form-group">
+            <label class="control-label left">
+                Password <small class="text-muted">(8 character min, Contains a-z, A-Z, 0-9)</small>
+            </label>
+            <div class="">
+                <input class="form-control" name="password" [type]="password.type" style="width:auto; display:inline-block;" [value]="data.password" (input)="data.password=$event.target.value">&nbsp;&nbsp;<div class="btn btn-sm clickable" [ngClass]="{'btn-primary': password.type == 'password', 'btn-secondary': password.type == 'text'}" (click)="togglePassword($event)"><i class="fa fa-eye"></i></div>
+            </div>
+            <a class="hidden password-reset-button clickable" data-action="user.forgot.password">Forgot Password?</a>
+        </div> 
+    </div>
+
+    <div class="user-password-confirm-container" [ngClass]="{'hidden': !email.valid || email.isRegistered()}">
+        <div class="form-group">
+            <label class="control-label left">
+                Confirm Password
+            </label>
+            <div class="">
+                <input class="form-control" name="password_confirm" [type]="password_confirm.type" style="width:auto; display:inline-block;" [value]="data.password_confirm" (input)="data.password_confirm=$event.target.value">&nbsp;&nbsp;<div class="btn btn-sm clickable" [ngClass]="{'btn-primary': password_confirm.type == 'password', 'btn-secondary': password_confirm.type == 'text'}" (click)="togglePasswordConfirm($event)"><i class="fa fa-eye"></i></div>
+            </div>
+        </div> 
+    </div>
+
+    <div class="user-login" [ngClass]="{'hidden': !email.isRegistered()}">
+        <div class="btn btn-md btn-primary clickable" [ngClass]="{'disabled': form.isLoading()}" (click)="login($event)">Login <i class="fa fa-play"></i></div>
+    </div>
+
+    <div class="user-set-password-and-login-container" [ngClass]="{'hidden': !email.isDuplicate() || email.isRegistered()}">
+        <div class="btn btn-md btn-primary clickable" [ngClass]="{'disabled': form.isLoading()}" (click)="registerPassword($event)">Set Password & Login <i class="fa fa-play"></i></div>
+    </div>
+
+    <div class="user-registration" [ngClass]="{'hidden': !email.isNew()}">
+        <div class="form-group">
+            <label class="control-label left">
+                First Name
+            </label>
+            <div>
+                <input name="first_name" class="form-control" [value]="data.first_name" (input)="data.first_name=$event.target.value"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label left">
+                Last Name
+            </label>
+            <div>
+                <input name="last_name" class="form-control" [value]="data.last_name" (input)="data.last_name=$event.target.value"/>
+            </div>
+        </div>
+
+        <div class="btn btn-md btn-primary clickable" [ngClass]="{'disabled': form.isLoading()}" (click)="register($event)">Register <i class="fa fa-play"></i></div>
+    </div>  
+    
+</form>

@@ -1,0 +1,6 @@
+<div *ngIf="message && visible" [ngClass]="{'text-danger': isError(), 'text-success': isSuccess()}">
+    <i class="fas" [ngClass]="{'fa-circle-notch fa-spin': isLoading(), 'fa-check': isSuccess(), 'fa-exclamation-circle text-warning': isNotice(), 'fa-ban': isError()}"></i>&nbsp;<span [innerHTML]="message"></span>
+    <div *ngFor="let error of errors; index as i;">
+        <i class="fas fa-fw fa-exclamation-circle"></i>&nbsp;{{ error }}
+    </div>
+</div>
