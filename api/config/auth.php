@@ -100,7 +100,7 @@ return [
     ],
 
     'jwt' => [
-        'secret' => 'Caffeine!4&223',
+        'secret' => env("JWT_SECRET"),
         'expires_in' => '120'
     ]
 
