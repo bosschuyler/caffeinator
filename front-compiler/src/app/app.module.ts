@@ -19,7 +19,7 @@ import { MessageComponent } from './utilities/message/message.component';
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
-    Beverage.Component.Calculator,
+    Beverage.Component,
     MessageComponent
   ],
   imports: [

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "caffeinator": {
+    "budget": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -50,7 +50,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "caffeinators": [
+              "budgets": [
                 {
                   "type": "initial",
                   "maximumWarning": "2mb",

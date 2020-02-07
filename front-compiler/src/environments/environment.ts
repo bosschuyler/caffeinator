@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_host: 'http://caffeinator.com'
+  api_host: 'http://caffeinator.skybos.com'
 };
 
 /*

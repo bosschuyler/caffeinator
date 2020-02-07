@@ -11,7 +11,7 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class NavbarComponent implements OnInit {
   
-  constructor(private userService: UserService, private router: Router) {
+  constructor(public userService: UserService, private router: Router) {
     
   }
 
