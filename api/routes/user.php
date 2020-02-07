@@ -5,3 +5,4 @@ Route::any('user/register', 'User\RegisterController@register')->name('user.regi
 Route::any('user/register/password', 'User\RegisterController@password')->name('user.register.password')->middleware('cors');
 
 Route::any('user/login', 'User\AuthenticationController@login')->name('user.authentication.login')->middleware('cors');
+Route::any('user/logout', 'User\AuthenticationController@logout')->name('user.authentication.logout')->middleware('cors');

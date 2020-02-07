@@ -13,7 +13,8 @@ import { environment } from '../../environments/environment';
 export class UserService {
 	private registerUrl = environment.api_host + '/api/user/register';
 	private registerPasswordUrl = environment.api_host + '/api/user/register/password';
-	private loginUrl = environment.api_host + '/api/user/login';
+    private loginUrl = environment.api_host + '/api/user/login';
+    private logoutUrl = environment.api_host + '/api/user/logout';
 
     private auth = {};
 	
@@ -61,6 +62,15 @@ export class UserService {
                 var token =response.getParam('token');
                 if(token)
                     localStorage.setItem('token', token);
+				return of(new Response(res));
+			})
+		);
+    }
+    
+    logout(): Observable<Response> {
+		var form = new FormData();
+		return this.http.post(this.logoutUrl, form).pipe(
+			flatMap((res: object) => {
 				return of(new Response(res));
 			})
 		);
